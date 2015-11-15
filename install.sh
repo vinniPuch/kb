@@ -1,0 +1,132 @@
+#!/bin/bash
+
+# name:		k-base installer
+# author:	Dmitry Matviychuk
+# email:	dmitry.matviychuk@gmail.com
+# date:		9.03.2014
+
+clear
+
+#get root permission if user not root
+
+if [ "$(id -u)" != "0" ]; then
+	echo "For start this script you need be root";
+	echo "Get root permissions, enter root password, and try start script again!";
+	#sudo su
+	exit 1
+fi
+
+echo "Start installing k-base ...";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nWrite domeins to /etc/hosts...";
+
+if ! grep -q kb-editor.loc /etc/hosts; then					#check if exists record in file
+	echo -e "127.0.0.1 \\t kb-editor.loc" >> /etc/hosts 	#ip v4
+	echo -e "::1 \\t\\t kb-editor.loc" >> /etc/hosts 		#ip v6
+fi
+
+if ! grep -q k-base.loc /etc/hosts; then					#check if exists record in file
+	echo -e "127.0.0.1 \\t k-base.loc" >> /etc/hosts		#ip v4 	
+	echo -e "::1 \\t\\t k-base.loc" >> /etc/hosts 			#ip v6
+fi	
+
+echo -e "Write domeins to /etc/hosts done. ";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nCreate virtual hosts...";
+
+path=`pwd`;
+echo -e "<VirtualHost *:80> \\n\\t ServerAlias k-base.loc \\n\\t DocumentRoot $path/base \\n</VirtualHost>" > /etc/apache2/sites-available/k-base.loc.conf
+
+
+path=`pwd`;
+echo -e "<VirtualHost *:80> \\n\\t ServerAlias kb-editor.loc \\n\\t DocumentRoot $path/application \\n</VirtualHost>" > /etc/apache2/sites-available/kb-editor.loc.conf
+
+echo -e "Create virtual hosts done.\\n";        
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nSwitch on hosts...";
+
+a2ensite k-base.loc.conf
+a2ensite kb-editor.loc.conf
+
+echo -e "Switch on hosts done.\\n";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nRestart server...";
+
+service apache2 restart
+
+echo -e "Restart server done.\\n";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nCopy .css files...";
+
+cp base/css/style.css  application/css/style-frame.css
+
+echo -e "Copy .css files done.\\n";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nCopy .js files...";
+
+cp application/js/update-category.js base/js/update-category.js
+cp application/js/jquery.js base/js/jquery.js
+
+echo -e "Copy .js files done.\\n";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nRemove filse from tmp direcroty...";
+
+rm application/tmp/*
+
+echo -e "Remove filse from tmp direcroty done.\\n";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nChange permissions to files...";
+
+chmod -R 777 base
+chmod -R 777 application
+
+echo -e "Change permissions to files done...\\n";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nInstall tidy...";
+
+apt-get install tidy
+
+echo -e "Install tidy done...\\n";
+
+#------------------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nAdd make-category alias to bashrc...";
+
+if ! grep -q make-category.bash ~/.bashrc; then															 				#check if exists alias
+	echo -e "alias make-cat=\"path=\`pwd\`; cd `pwd`/base/category/; ./make-category.bash; cd \$path\"" >> ~/.bashrc 	#add alias
+else
+
+	new_path=`pwd`;					# patch to k-base folder
+	new_path=${new_path//\//\\/}	# escape  /
+
+	sed -n -r -i  '1h;1!H;${;g;s/; cd .*\/base\/category\/;/'"; cd $new_path\/base\/category\/;"'/g;p}' ~/.bashrc		#update alias patchs
+fi
+
+source ~/.bashrc
+
+echo -e "Add alias make-category to bashrc done...\\n";
+
+#------------------------------------------------------------------------------------------
+
+echo -e "\\nInstallation completed successfully!!\\n";
+echo -e "\\nDont forget set permissions for parent folder ../base!!\\n";

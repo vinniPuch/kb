@@ -1,0 +1,138 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl3">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Добавление папок и файлов в игнор</h4>
+         </div>
+
+         <table id="table-3column-2bold">
+            <tbody>
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        1) Прежде чем добавить файл в игнор
+                     </div>
+
+                     <div>
+                        &nbsp;необходимо удалить его из репозитория (если он там есть)
+                     </div>
+                  </td>
+
+                  <td class="middle">rm 01.conf<br>
+                  ci -m "delete file 01.conf</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        2) Перейти в папку с файлом и добавить
+                     </div>
+
+                     <div>
+                        файл в игнор ( папка f1 в ней файл 01.conf)
+                     </div>
+                  </td>
+
+                  <td class="middle">svn propedit svn:ignore</td>
+
+                  <td class="last">
+                     <div>
+                        В редакторе указываем 01.conf (можно использовать маски * *.*)сохраняемся и закрываем его.
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">3) Фиксируем изминения.</td>
+
+                  <td class="middle">
+                     <div>
+                        svn ci -m"add 01.conf to ignore"
+                     </div>
+                  </td>
+
+                  <td class="last">
+                     <div>
+                        Возможно что перед коммитом понадобится сделать svn up.
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        4) В игнор нельзя добавить паку но можно добавить ее содержимое использовав маску *
+                     </div>
+                  </td>
+
+                  <td class="middle">
+                     <div>
+                        svn propedit svn:ignore ./f1
+                     </div>
+                  </td>
+
+                  <td class="last">
+                     <div>
+                        В редакторе указываем маску *
+                     </div>
+
+                     <div>
+                        сохраняемся и закрываем редатор.
+                     </div>
+
+                     <div>
+                        И не забываем сделать&nbsp;
+                     </div>
+
+                     <div>
+                        svn ci -m"add f1 to ignore"
+                     </div>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

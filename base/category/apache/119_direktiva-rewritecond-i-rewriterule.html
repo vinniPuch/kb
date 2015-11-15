@@ -1,0 +1,752 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';        
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl2">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Директива RewriteCond и RewriteRule</h4>
+         </div>
+
+         <table id="table-2column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs">
+                     !!!!!! Перед использованием&nbsp;RewriteRule необходимо убедиться что включен модуль rewrite_mod иначе будет 500 ошибка !!!!!!!!!!!!!!!!!&nbsp;<br>
+                     <br>
+                     ( &nbsp; sudo a2enmod rewrite&nbsp;<br>
+                     &nbsp; &nbsp; AllowOverride None &nbsp;-&gt; изменить на &nbsp;-&gt; AllowOverride All &nbsp;в &nbsp;конфиге хоста )<br>
+                     <br>
+                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>
+                     Директива RewriteCond - определяет условие, при котором происходит преобразование. RewriteCond определяет условия для какого-либо правила. Перед директивой RewriteRule располагаются одна или несколько директив RewriteCond. Следующее за ними правило преобразования используется только тогда, когда URI соответствует условиям этой директивы и также условиям этих дополнительных директив.<br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+
+                     <div>
+                        Условие это шаблон условия, т.е., какое-либо регулярное выражение, применяемое к текущему экземпляру "Сравниваемая Строка", т.е., "Сравниваемая Строка" просматривается на поиск соответствия Условие.&nbsp;
+                     </div>
+
+                     <div>
+                        Помните: Условие это perl совместимое регулярное выражение с некоторыми дополнениями:&nbsp;
+                     </div>
+
+                     <div>
+                        Вы можете предварять строку шаблона префиксом '!' для указания несоответствия шаблону.
+                     </div>
+
+                     <div>
+                        '&lt;Условие' (лексически меньше)
+                     </div>
+
+                     <div>
+                        '&gt;Условие' (лексически больше)
+                     </div>
+
+                     <div>
+                        '=Условие' (лексически равно)
+                     </div>
+
+                     <div>
+                        '-d' (является ли каталогом)
+                     </div>
+
+                     <div>
+                        '-f' (является ли обычным файлом)
+                     </div>
+
+                     <div>
+                        '-s' (является ли обычным файлом с ненулевым размером)
+                     </div>
+
+                     <div>
+                        '-l' (является ли символической ссылкой)
+                     </div>
+
+                     <div>
+                        '-F' (проверка существования файла через подзапрос)
+                     </div>
+
+                     <div>
+                        '-U' (проверка существования URL через подзапрос)
+                     </div>
+
+                     <div>
+                        Все эти проверки также могут быть предварены префиксом восклицательный знак ('!') для инвертирования их значения.
+                     </div>
+                  </td>
+
+                  <td class="last">
+                     <div>
+                        $N
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        (0 &lt;= N &lt;= 9) предоставляющие доступ к сгруппированным частям (в круглых скобках!) шаблона из соответствующей директивы RewriteRule (единственной, следующей сразу за текущим набором директив RewriteCond).&nbsp;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        %N
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        (1 &lt;= N &lt;= 9) предоставляющие доступ к сгруппированным частям (в круглых скобках!) шаблона из соответствующей директивы RewriteCond в текущем наборе условий.&nbsp;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        %{NAME_OF_VARIABLE}
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        где NAME_OF_VARIABLE может быть одной из ниже приведенных переменных
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <table border="1" style="border-collapse: collapse; border: 0px; color: rgb(49, 56, 60); font-family: 'trebuchet ms', sans-serif; font-size: 12px; background-color: rgb(255, 255, 255);">
+                           <tbody>
+                              <tr>
+                                 <td valign="top" width="180" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;HTTP_USER_AGENT</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Содержит информацию о типе и версии браузера и операционной системы посетителя.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;HTTP_REFERER</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Приводится адрес страницы, с которой посетитель пришёл на данную страницу.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;HTTP_COOKIE</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Список COOKIE, передаваемых браузером&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;HTTP_FORWARDED</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Страница непосредственно, с которой перешел пользователь&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;HTTP_HOST</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Адрес сервера, например,&nbsp;<a href="http://bget.ru/" style="color: rgb(255, 127, 0); outline: none;">beget.ru</a>&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;HTTP_ACCEPT</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Описываются предпочтения клиента относительно типа документа.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" width="180" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;REMOTE_ADDR</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;IP-адрес посетителя.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;REMOTE_HOST</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;адрес посетителя в нормальной форме — например, rt99.net.ru&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;REMOTE_IDENT</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Имя удаленного пользователя. Имеет формат имя.хост, например, kondr.www.rtt99.net.ru&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;REMOTE_USER</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Тоже, что и REMOTE_IDENT, но содержит только имя. Пример:&nbsp;<b>kondr</b>&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;REQUEST_METHOD</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Позволяет определить тип запроса (GET или POST). Должен обязательно анализироваться, т.к. определяет дальнейший способ обработки информации&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;SCRIPT_FILENAME</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Полный путь к веб-странице на сервере.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;PATH_INFO</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Содержит в себе все, что передавалось в скрипт.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;QUERY_STRING</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Содержит строчку, переданную в качестве запроса при вызове&nbsp;<b>CGI</b>&nbsp;скрипта.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;AUTH_TYPE</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Используется для идентификации пользователя&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;DOCUMENT_ROOT</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Cодержит путь к корневой директории сервера.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;SERVER_ADMIN</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Почтовый адрес владельца сервера, указанный при установке.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;SERVER_NAME</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Адрес сервера, типа&nbsp;<a href="http://kondr.beget.ru/" style="color: rgb(255, 127, 0); outline: none;">kondr.beget.ru</a>&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;SERVER_ADDR</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;IP-адрес вашего сайта.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;SERVER_PORT</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Порт, на котором работает Apache.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;SERVER_PROTOCOL</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Версия&nbsp;<b>HTTP</b>&nbsp;протокола.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;SERVER_SOFTWARE</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Название сервера, например,&nbsp;<b>Apache/1.3.2 (Unix)</b>&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;TIME_YEAR<br>
+                                 &nbsp;TIME_MON<br>
+                                 &nbsp;TIME_DAY<br>
+                                 &nbsp;TIME_HOUR<br>
+                                 &nbsp;TIME_MIN<br>
+                                 &nbsp;TIME_SEC<br>
+                                 &nbsp;TIME_WDAY<br>
+                                 &nbsp;TIME</b><br></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Переменные предназначены для работы со временем в разных форматах.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;API_VERSION</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Это версия&nbsp;<b>API</b>&nbsp;модуля&nbsp;<b>Apache</b>&nbsp;(внутренний интерфейс между сервером и модулем) в текущей сборке сервера, что определено в&nbsp;<b>include/ap_mmn.h</b>.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;THE_REQUEST</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Полная строка&nbsp;<b>HTTP</b>&nbsp;запроса отправленная браузером серверу (т.е.,&nbsp;<b>«GET /index.html HTTP/1.1»</b>). Она не включает какие-либо дополнительные заголовки отправляемые браузером.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;REQUEST_URI</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Ресурс, запрошенный в строке HTTP запроса.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;REQUEST_FILENAME</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Полный путь в файловой системе сервера к файлу или скрипту соответствующим этому запросу.&nbsp;<br></p>
+                                 </td>
+                              </tr>
+
+                              <tr>
+                                 <td valign="top" align="left" style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;"><b>&nbsp;IS_SUBREQ</b></td>
+
+                                 <td style="font-family: 'trebuchet ms', sans-serif; padding: 0px; vertical-align: top;">
+                                    <p style="margin-top: 1em;">&nbsp;Будет содержать текст «true» если запрос выполняется в текущий момент как подзапрос, «false» в другом случае. Подзапросы могут быть сгенерированы модулями которым нужно иметь дело с дополнительными файлами или URI для того чтобы выполнить собственные задачи.&nbsp;<br></p>
+
+                                    <div>
+                                       <br>
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteEngine включает или выключает работу механизма преобразования. Если она установлена в положение off этот модуль совсем не работает. Отметьте, что по умолчанию, настройки преобразований не наследуются. Это означает что вы должны иметь RewriteEngine on директиву для каждого виртуального хоста в котором вы хотите использовать этот модуль.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteEngine on | off
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # По умолчанию RewriteEngine off
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Используйте для комбинирования условий в правилах OR вместо AND. Типичный пример - перенаправление запросов на поддомены в отдельные каталоги.&nbsp;</td>
+
+                  <td class="last">
+                     <div>
+                        RewriteEngine on
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteCond %{REMOTE_HOST} ^mysubdomain1.* [OR]
+                     </div>
+
+                     <div>
+                        RewriteCond %{REMOTE_HOST} ^mysubdomain2.* [OR]
+                     </div>
+
+                     <div>
+                        RewriteCond %{REMOTE_HOST} ^mysubdomain3.*
+                     </div>
+
+                     <div>
+                        RewriteRule ^(.*)$ ^mysubdomain_public_html/
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteCond %{REMOTE_HOST} ^mysubdomain4.*
+                     </div>
+
+                     <div>
+                        RewriteRule ^(.*)$ ^mysubdomain4_public_html/
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Общий синтаксис директивы RewriteRule выглядит следующим образом:&nbsp;</td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteRule Шаблон Подстановка [flag]
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # flag - необязательное поле указывающее дополнительные опции
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <div>
+                           В подстановке вы можете использовать, в том числе, и специальные флаги путем добавления в качестве третьего аргумента директивы RewriteRule. Флаги — это разделённый запятыми, следующий список флагов:
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'redirect|R [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (вызывает редирект)
+                        </div>
+
+                        <div>
+                           Префикс в Подстановке вида http://thishost[:thisport]/ (создающий новый URL из какого-либо URI) запускает внешний редирект (перенаправление). Если нет никакого кода в подстановке ответ будет с HTTP статусом 302 (ВРЕМЕННО ПЕРЕМЕЩЕН). Для остановки процесса преобразования, вам также нужно написать флаг 'L'.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'forbidden|F [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (делает URL запрещенным)
+                        </div>
+
+                        <div>
+                           Это делает текущий URL запрещённым, например, клиенту немедленно отправляется ответ с HTTP статусом 403 (ЗАПРЕЩЕНО). Используйте этот флаг в сочетании с соответствующими RewriteConds для блокирования URL по некоторым критериям.
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'gone|G [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (делает URL «мёртвым»)
+                        </div>
+
+                        <div>
+                           Этот флаг делает текущий URL «мертвым», т.е., немедленно отправляется HTTP ответ со статусом 410 (GONE). Используйте этот флаг для маркировки «мертвыми» не существующие более страницы.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'proxy|P [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (вызвает прокси)
+                        </div>
+
+                        <div>
+                           Этот флаг помечает подстановочную часть как внутренний запрос прокси и немедленно (т.е., процесс преобразования здесь останавливается) пропускает его через прокси модуль. Используйте этот флаг для того, чтобы добиться более мощной реализации директивы ProxyPass, интегрирующей некоторое содержимое на удаленных серверах, в пространство имён локального сервера.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'last|L [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (последнее правило)
+                        </div>
+
+                        <div>
+                           Остановить процесс преобразования на этом месте и не применять больше никаких правил преобразований. Используйте этот флаг для того, чтобы не преобразовывать текущий URL другими, следующими за этим, правилами преобразований.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'next|N [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (следуюший раунд)
+                        </div>
+
+                        <div>
+                           Перезапустить процесс преобразований (начав с первого правила). В этом случае URL снова сопоставляется неким условиям, но не оригинальный URL, а URL вышедший из последнего правила преобразования.Используйте этот флаг для перезапуска процесса преобразований, т.е., безусловному переходу на начало цикла.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'chain|C [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (связь со следующим правилом)
+                        </div>
+
+                        <div>
+                           Этот флаг связывает текущее правило со следующим (которое, в свою очередь, может быть связано со следующим за ним, и т.д.). Это имеет следующий эффект: если есть соответствие правилу, процесс продолжается как обычно, т.е., флаг не производит никакого эффекта. Если правило не соответствует условию, все следующие, связанные правила, пропускаются.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'type|T=MIME-тип [=code]'
+                        </div>
+
+                        <div>
+                           (принудительно установить MIME тип)
+                        </div>
+
+                        <div>
+                           Принудительно установить MIME-тип целевого файла в MIME-тип. К примеру, это можно использовать для имитации mod_alias директивы ScriptAlias которая принудительно устанавливает для всех файлов внутри отображаемого каталога MIME тип равный «application/x-httpd-cgi».&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'nosubreq|NS [=code]'
+                        </div>
+
+                        <div>
+                           (используется только в случае не внутреннего подзапроса)
+                        </div>
+
+                        <div>
+                           Этот флаг дает команду механизму преобразований пропустить директиву если текущий подзапрос является внутренним подзапросом. К примеру, внутренние подзапросы в Apache происходят тогда, когда mod_include пытается получить информацию о возможных файлах по умолчанию для каталогов (index.xxx). При подзапросах это не всегда полезно и даже иногда вызывает проблему в работе набора директив преобразований. Используйте этот флаг для исключения некоторых правил.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'nocase|NC [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (не учитывать регистр)
+                        </div>
+
+                        <div>
+                           Это делает Шаблон нечувствительным к регистру, т.е., нет различий между 'A-Z' и 'a-z' когда Шаблон применяется к текущему URL.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'qsappend|QSA [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (добавлять строку запроса)
+                        </div>
+
+                        <div>
+                           Этот флаг указывает механизму преобразований на добавление, а не замену, строки запроса из URL к существующей, в строке подстановки. Используйте это когда вы хотите добавлять дополнительные данные в строку запроса с помощью директив преобразований.&nbsp;
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           'noescape|NE [=code]'&nbsp;
+                        </div>
+
+                        <div>
+                           (не экранировать URI при выводе)
+                        </div>
+
+                        <div>
+                           Этот флаг не даёт mod_rewrite применять обычные правила экранирования URI к результату преобразования. Обычно, специальные символы (такие как '%', '$', ';', и так далее) будут экранированы их шестнадцатиричными подстановками ('%25', '%24', и '%3B', соответственно); этот флаг не дает это делать.&nbsp;
+                        </div>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        Если в подкаталогах в .htaccess нет ни одной директивы модуля mod_rewrite, то все правила преобразования наследуются из родительского каталога.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        При наличии в файле .htaccess каких-либо директив модуля mod_rewrite не наследуется ничего, а состояние по умолчанию выставляется таким же, как в главном конфигурационном файле веб-сервера (по умолчанию "off"). Поэтому, если нужны правила преобразования для конкретного каталога, то нужно еще раз вставить директиву "RewriteEngine on" в .htaccess для конкретного каталога.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        При наследовании правил из верхних каталогов и добавлении к ним новых свойственных только данному каталогу - необходимо выставить в начале следующее: "RewriteEngine on" и "RewriteOptions inherit" - последняя директива сообщает серверу о продолжении.&nbsp;
+                     </div>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

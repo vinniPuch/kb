@@ -1,0 +1,45 @@
+/* inside frame indent for kb-editor menu */
+#wrapper div.page-title{
+    top:25px;
+}
+#content-wrapper div#header-indent{
+    height: 74px;
+}
+
+/* new logo urls */
+title #logo div{
+	background-image: url(/img/logo.png);
+}
+
+.page-title #title #logo div:hover{
+	background-image: url(/img/logo-active.png);
+}
+
+/* hide not filled category */
+
+#category{
+    visibility: hidden;
+}
+
+/* editor controls */
+
+.active{
+    /*background-color:#9ACD32;*/
+    background-color: #9ACD8F;
+}
+
+td.controls {
+    width: 40px;
+}
+
+.controls-add, .controls-delete{ width: 16px; height: 16px; margin-top: 2px;}
+.controls-add:hover, .controls-delete:hover{ cursor: pointer;}
+
+table{
+	color: black;
+}
+
+/* hide category in editor */
+.category{
+    display: none;
+}

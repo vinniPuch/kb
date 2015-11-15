@@ -1,0 +1,411 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/git/git.html">GIT</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl3">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Просмотр истории коммитов</h4>
+         </div>
+
+         <table id="table-3column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs">Просмотр истории коммитов&nbsp;</td>
+
+                  <td class="middle"><br>
+                  git log<br>
+                  <br></td>
+
+                  <td class="last">Вызов команды без аргументов</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Ключ - р который показывает дельту (разницу/diff), привнесенную каждым коммитом. Вы также можете использовать -2, что ограничит вывод до 2-х последних записей:</td>
+
+                  <td class="middle"><br>
+                  <br>
+                  git log -p -2</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Чтобы получить дельту по словам вместо обычной дельты по строкам, нужно дописать после команды &nbsp;опцию --word-diff</td>
+
+                  <td class="middle">git log -U1 --word-diff</td>
+
+                  <td class="last">Также может быть полезно сократить обычные три строки контекста в выводе команды diff до одной строки, так как контекстом в данном случае являются слова, а не строки. Сделать это можно с помощью опции -U1 как было показано в примере.</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">С командой git log вы также можете использовать группы суммирующих параметров. Например, если вы хотите получить некоторую краткую статистику по каждому коммиту, вы можете использовать параметр --stat</td>
+
+                  <td class="middle">--stat</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Другой действительно полезный параметр — это --pretty. Он позволяет изменить формат вывода лога. Для вас доступны несколько предустановленных вариантов. Параметр oneline выводит каждый коммит в одну строку, что удобно если вы просматриваете большое количество коммитов. В дополнение к этому, параметры short, full, и fuller, практически не меняя формат вывода, позволяют выводить меньше или больше деталей соответственно</td>
+
+                  <td class="middle">
+                     <div>
+                        git log --pretty=oneline
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        git log --pretty=format:"%h - %an, %ar : %s"
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <table class="ref" style="margin-bottom: 10px; border: 0px; font-family: adelle, Georgia, 'Times New Roman', serif; line-height: 22px; font-size: 14px; vertical-align: baseline; border-collapse: collapse; border-spacing: 0px; width: 500px; color: rgb(78, 68, 60); background-color: rgb(252, 252, 250);">
+                           <thead style="border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; vertical-align: baseline;">
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <th style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;">Параметр</th>
+
+                                 <th style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Описание выводимых данных</th>
+                              </tr>
+                           </thead>
+
+                           <tbody style="border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; vertical-align: baseline;">
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%H</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;" class="">Хеш коммита</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%h</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;" class="">Сокращённый хеш коммита</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%T</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Хеш дерева</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%t</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Сокращённый хеш дерева</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%P</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Хеши родительских коммитов</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%p</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Сокращённые хеши родительских коммитов</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%an</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Имя автора</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%ae</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Электронная почта автора</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%ad</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Дата автора (формат соответствует параметру&nbsp;<code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--date=</code>)</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%ar</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Дата автора, относительная (пр. "2 мес. назад")</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%cn</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Имя коммитера</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%ce</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Электронная почта коммитера</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%cd</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Дата коммитера</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%cr</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Дата коммитера, относительная</td>
+                              </tr>
+
+                              <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">%s</code></td>
+
+                                 <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Комментарий<br>
+                                 <br></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Этот параметр добавляет миленький ASCII-граф, показывающий историю ветвлений и слияний</td>
+
+                  <td class="middle">git log --pretty=format:"%h %s" --graph</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Другие полезные параметры вместе с описанием того, как они влияют на вывод команды</td>
+
+                  <td class="middle">
+                     <table class="ref" style="margin-bottom: 10px; border: 0px; font-family: adelle, Georgia, 'Times New Roman', serif; line-height: 22px; font-size: 14px; vertical-align: baseline; border-collapse: collapse; border-spacing: 0px; width: 520px; color: rgb(78, 68, 60); background-color: rgb(252, 252, 250);">
+                        <thead style="border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; vertical-align: baseline;">
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <th style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;">Параметр</th>
+
+                              <th style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Описание</th>
+                           </tr>
+                        </thead>
+
+                        <tbody style="border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; vertical-align: baseline;">
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">-p</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Для каждого коммита показывать дельту внесённых им изменений.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--word-diff</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;" class="">Показывать изменения на уровне слов.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--stat</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Для каждого коммита дополнительно выводить статистику по изменённым файлам.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--shortstat</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Показывать только строку changed/insertions/deletions от вывода с опцией&nbsp;<code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--stat</code>.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--name-only</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Показывать список изменённых файлов после информации о коммите.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--name-status</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Выводить список изменённых файлов вместе с информацией о добавлении/изменении/удалении.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--abbrev-commit</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Выводить только первые несколько символов контрольной суммы SHA-1 вместо всех 40.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--relative-date</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Выводить дату в относительном формате (например, "2 weeks ago") вместо полной даты.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--graph</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Показывать ASCII-граф истории ветвлений и слияний рядом с выводом лога.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--pretty</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Отображать коммиты в альтернативном формате. Возможные параметры:<code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">oneline</code>,&nbsp;<code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">short</code>,&nbsp;<code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">full</code>,&nbsp;<code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">fuller</code>&nbsp;и&nbsp;<code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">format</code>&nbsp;(где вы можете указать свой собственный формат).<br>
+                              <br></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Ограничение вывода команды log<br>
+                  <br></td>
+
+                  <td class="middle"></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Команда выдаёт список коммитов, сделанных за последние две недели</td>
+
+                  <td class="middle">git log --since=2.weeks</td>
+
+                  <td class="last">Такая команда может работать с множеством форматов — вы можете указать точную дату (“2008-01-15”) или относительную дату, такую как “2 years 1 day 3 minutes ago”.</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Вы также можете отфильтровать список коммитов по какому-либо критерию поиска. Опция --author позволяет фильтровать по автору, опция --grep позволяет искать по ключевым словам в сообщении. (Заметим, что, если вы укажете и опцию author, и опцию grep, то будут найдены все коммиты, которые удовлетворяют первому ИЛИ второму критерию. Чтобы найти коммиты, которые удовлетворяют первому И второму критерию, следует добавить опцию --all-match.)</td>
+
+                  <td class="middle">
+                     <table class="ref" style="margin-bottom: 10px; border: 0px; font-family: adelle, Georgia, 'Times New Roman', serif; line-height: 22px; font-size: 14px; vertical-align: baseline; border-collapse: collapse; border-spacing: 0px; width: 525px; color: rgb(78, 68, 60); background-color: rgb(252, 252, 250);">
+                        <thead style="border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; vertical-align: baseline;">
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <th style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;">Опция</th>
+
+                              <th style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Описание</th>
+                           </tr>
+                        </thead>
+
+                        <tbody style="border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; vertical-align: baseline;">
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">-(n)</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Показать последние n коммитов</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--since, --after</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Ограничить коммиты теми, которые сделаны после указанной даты.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--until, --before</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Ограничить коммиты теми, которые сделаны до указанной даты.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--author</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Показать только те коммиты, автор которых соответствует указанной строке.</td>
+                           </tr>
+
+                           <tr style="border: 1px solid; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size: 14px;">
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle; width: 152px;"><code style="margin-bottom: 1em; padding: 1px; border: 1px solid rgb(239, 238, 230); font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: 18px; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; display: inline; color: rgb(241, 78, 50); overflow: auto; font-family: Courier, monospace !important; background-color: rgb(255, 255, 255);">--committer</code></td>
+
+                              <td style="padding: 5px; border: 0px; font-family: inherit; font-style: inherit; font-variant: inherit; line-height: inherit; vertical-align: middle;">Показать только те коммиты, коммитер которых соответствует указанной строке.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Последняя действительно полезная опция-фильтр для git log — это путь. Указав имя каталога или файла, вы ограничите вывод log теми коммитами, которые вносят изменения в указанные файлы. Эта опция всегда указывается последней и обычно предваряется двумя минусами (--), чтобы отделить пути от остальных опций.</td>
+
+                  <td class="middle"></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Например, если вы хотите посмотреть из истории Git'а такие коммиты, которые вносят изменения в тестовые файлы, были сделаны Junio Hamano, не являются слияниями и были сделаны в октябре 2008го, вы можете выполнить что-то вроде такого:</td>
+
+                  <td class="middle">
+                     <div>
+                        git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \
+                     </div>
+
+                     <div>
+                        &nbsp; &nbsp;--before="2008-11-01" --no-merges -- t/
+                     </div>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Если у вас есть желание использовать какой-нибудь графический инструмент для визуализации истории коммитов, можно попробовать распространяемую вместе с Git'ом программу gitk, написанную на Tcl/Tk. В сущности gitk — это наглядный вариант git log, к тому же он принимает почти те же фильтрующие опции, что и git log</td>
+
+                  <td class="middle"></td>
+
+                  <td class="last"></td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/git/git.html">GIT</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

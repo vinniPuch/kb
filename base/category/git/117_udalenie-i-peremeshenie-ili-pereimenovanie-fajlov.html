@@ -1,0 +1,107 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/git/git.html">GIT</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl3">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Удаление и перемещение или переименование файлов</h4>
+         </div>
+
+         <table id="table-3column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs">Для того чтобы удалить файл из Git'а, вам необходимо удалить его из отслеживаемых файлов (точнее, удалить его из вашего индекса) а затем выполнить коммит. Это позволяет сделать команда git rm, которая также удаляет файл из вашего рабочего каталога, так что вы в следующий раз не увидите его как “неотслеживаемый”.</td>
+
+                  <td class="middle">git rm</td>
+
+                  <td class="last">
+                     Если вы просто удалите файл из своего рабочего каталога, он будет показан в секции “Changes not staged for commit” (“Изменённые но не обновлённые” — читай не проиндексированные) вывода команды git status Затем, если вы выполните команду git rm, удаление файла попадёт в индекс:
+
+                     <div>
+                        После следующего коммита файл исчезнет и больше не будет отслеживаться.
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Если вы изменили файл и уже проиндексировали его, вы должны использовать принудительное удаление с помощью параметра -f</td>
+
+                  <td class="middle">git rm -f</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Удалить файл из индекса, оставив его при этом в рабочем каталоге. Другими словами, вы можете захотеть оставить файл на винчестере, и убрать его из-под бдительного ока Git'а. Это особенно полезно, если вы забыли добавить что-то в файл .gitignore и по ошибке проиндексировали, например, большой файл с логами, или кучу промежуточных файлов компиляции. Чтобы сделать это, используйте опцию --cached/<span style="font-weight: bold; background-color: rgb(222, 223, 223);">--staged</span></td>
+
+                  <td class="middle">git rm<span style="background-color: rgb(222, 223, 223);">&nbsp;--staged</span></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">В команду git rm можно передавать файлы, каталоги или glob-шаблоны. Это означает, что вы можете вытворять что-то вроде</td>
+
+                  <td class="middle">git rm log/\*.log</td>
+
+                  <td class="last">Обратите внимание на обратный слэш (\) перед *. Он необходим из-за того, что Git использует свой собственный обработчик имён файлов вдобавок к обработчику вашего командного интерпретатора. Эта команда удаляет все файлы, которые имеют расширение .log в каталоге log/</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Переименовать файл в Git'е</td>
+
+                  <td class="middle">
+                     <div>
+                        git mv file_from file_to
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last">Git неявно определяет, что произошло переименование, поэтому неважно, переименуете вы файл так или используя команду mv. Единственное отличие состоит лишь в том, что mv — это одна команда вместо трёх — это функция для удобства. Важнее другое — вы можете использовать любой удобный способ, чтобы переименовать файл, и затем воспользоваться add/rm перед коммитом.</td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/git/git.html">GIT</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

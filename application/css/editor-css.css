@@ -1,0 +1,79 @@
+*{ margin: 0px; padding: 0px;}
+
+body {  background-color: #F0F8FF !important; height: 100%;}
+
+#editor-menu-wrapper {
+    position:fixed;
+    top:0px;
+    width: 100%;
+    height: 25px;
+    background-color: burlywood;
+    padding: 2px 0px 0px 0px;
+    z-index: 100;
+    
+}
+
+#msg-area{
+    float: left;
+    margin-left: -250px;
+    width: 245px;
+    color: white;
+    font-size: 20px;
+}
+
+.middle-sub-wrapper {
+    width: 345px;
+    margin: auto;
+}
+
+.info-msg {
+    width: 290px;
+    margin: 50px auto 30px auto;
+    border: 1px solid lightgreen;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: #dff0d8;
+}
+
+#cancel-button {
+    width: 60px;
+}
+
+#save-button {
+    width: 100px;
+}
+
+#download-button{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#start-button, #cancel-button, #save-button,  #download-button {
+    height: 21px;
+}
+
+.templates-wrapper{
+    width: 250px;
+    margin: 0 auto;
+}
+
+.templates-wrapper button{
+    height: 25px;
+    padding: 0px 4px 0px 4px;
+    margin-bottom: 8px;
+    width: 225px;
+}
+
+#editor-content-wrapper{
+    background-color: transparent;
+}
+
+iframe{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border: 0;
+    z-index: -100; /* make visible kb-edtor fix header */
+    height: 100%;
+    width: 100%;
+}

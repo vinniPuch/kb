@@ -1,0 +1,200 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';    
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl3">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Команда diff и варианты разрешения конфликтов</h4>
+         </div>
+
+         <table id="table-3column-2bold">
+     <tbody>
+            <tr contenteditable="false" class="">
+               <td class="first">Комада &nbsp;diff показывает конкретные
+               изминения в файлах. В примере сравнивается ревизия 9
+               и локальные изминения.<br></td>
+
+               <td class="middle">--- index.html (revision 9)<br>
+               +++ index.html (working copy)<br>
+               @@ -11,6 +11,7 @@</td>
+
+               <td class="last">То есть -11,6&nbsp;означает “в
+               количестве 6 строк, начиная со строки 11”, а минус в
+               начале говорит о том, что это относится к файлу
+               ревизии 9, который маркируется минусами:</td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">сравнить рабочие файлы с последней
+               ревизией<br></td>
+
+               <td class="middle">svn diff<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">сравнить локальный файл index.html с
+               последней ревизией этого файла в
+               репозитории,<br></td>
+
+               <td class="middle">svn diff index.html<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">сравнить все локальные файлы с ревизией
+               номер 9,<br></td>
+
+               <td class="middle">svn diff -r 9<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">index.html — сравнить локальный файл
+               index.html с ревизией номер 9,<br></td>
+
+               <td class="middle">svn diff -r
+               9&nbsp;index.html<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">сравнить файл index.html ревизии 9 с
+               этим же файлом, но ревизии 8 в репозитории.<br></td>
+
+               <td class="middle">svn diff -r
+               8:9&nbsp;index.html<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">
+                  <br />
+                     Варианты разрешения конфликтов
+                  <br />
+                  &nbsp;                  
+               </td>
+
+               <td class="middle"><br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">редактировать файл с
+               изменениями;<br></td>
+
+               <td class="middle">(e) edit<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">показать все конфликтующие
+               изменения;<br></td>
+
+               <td class="middle">(df) diff-full<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">принять файл, содержащий маркеры
+               слияния конфликтующих изменений;<br></td>
+
+               <td class="middle">(r) resolved<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">показать все конфликты;<br></td>
+
+               <td class="middle">(dc) display-conflict<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">принять свою версию и игнорировать
+               полученные изменения;<br></td>
+
+               <td class="middle">(mf) mine-full<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">принять полностью полученную версию
+               файла и отказаться от своих изменений;<br></td>
+
+               <td class="middle">(tf) theirs-full<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">отметить конфликт и разрешить его
+               позднее;<br></td>
+
+               <td class="middle">(p) postpone<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">использовать внешние средства для
+               разрешения конфликта.</td>
+
+               <td class="middle">(l) launch<br></td>
+
+               <td class="last"><br></td>
+            </tr>
+         </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

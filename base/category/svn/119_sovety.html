@@ -1,0 +1,153 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl3">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Советы</h4>
+         </div>
+
+         <table id="table-3column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs">
+                     <div>
+                        1) Решение проблеми с паролями( точнее
+                     </div>
+
+                     <div>
+                        менеджером паролей операционной истемы.
+                     </div>
+                  </td>
+
+                  <td class="middle"></td>
+
+                  <td class="last">
+                     <div>
+                        Возможно, вы столкнетесь с таким&nbsp;
+                     </div>
+
+                     <div>
+                        сообщением: Password for ‘(null)’ GNOME keyring:, и система не разрешит вам &nbsp; ввести имя пользователя для доступа к репозиторию. Втаком случае откройте файл ~/.subversion/config в &nbsp; &nbsp; &nbsp; &nbsp; текстовом редакторе раскомментируйте строку “password-stores” в секции auth] и удалите все значения. Строка должна выглядеть так:
+                     </div>
+
+                     <div>
+                        ФАЙЛ:
+                     </div>
+
+                     <div>
+                        ~/.SUBVERSION/CONFIG password-stores = Этими настройками вы отключите менеджеры паролей, встроенные в оболочку вашей операционной истемы,
+                     </div>
+
+                     <div>
+                        которые и мешают правильной работе SVN.
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        2) Для перемещения файлов всегда пользоваться средствами svn.
+                     </div>
+                  </td>
+
+                  <td class="middle">
+                     <div>
+                        svn move style.css misc/style.css
+                     </div>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        3) При работе в команде необходимо &nbsp; &nbsp; &nbsp; регулярно делать svn up что в какой-то мере убережот от конфликтов.
+                     </div>
+                  </td>
+
+                  <td class="middle">svn up</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        4) Ветки предназанчены для работы с
+                     </div>
+
+                     <div>
+                        проектом и развитием его в то время как теги снимки проекта в определенный момент времени.
+                     </div>
+                  </td>
+
+                  <td class="middle"></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        5) Как хранить файл конфигурации &nbsp; &nbsp; приложения который разный для разных
+                     </div>
+
+                     <div>
+                        машин.
+                     </div>
+                  </td>
+
+                  <td class="middle"></td>
+
+                  <td class="last">
+                     <div>
+                        В репозиторий добавить файл-шаблон конфигурации. Сам же файл конфигурации добавить в игнор. Когда пользователю нужен файл нфигурации он копирует шаблон в рабочий файл конфигурации и изменяет его под себя. Таким образом локальный &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; конфиг не попадет в репозиторий а от туда и на боевой сервер.
+                     </div>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

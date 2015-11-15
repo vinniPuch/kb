@@ -1,0 +1,154 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/git/git.html">GIT</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl3">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Настройка</h4>
+         </div>
+
+         <table id="table-3column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs">Настройка репозитория может быть сделана как для машини в целом, пользователя, или конкретного репозитория</td>
+
+                  <td class="middle">git config<br>
+                  <br>
+                  /etc/gitconfig - содержит значения, общие для всех пользователей системы и для всех их репозиториев. (ключ --system)<br>
+                  <br>
+                  ~/.gitconfig хранит настройки конкретного пользователя. ( ключ --global )<br>
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+                  <br>
+                  Конфигурационный файл в каталоге Git'а (.git/config) в том репозитории, где вы находитесь в данный момент.<br>
+                  <br>
+                  <br></td>
+
+                  <td class="last">
+                     <div>
+                        Настройки на каждом следующем уровне подменяют настройки из предыдущих уровней, то есть значения в .git/config перекрывают соответствующие значения в /etc/gitconfig.
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Установить имя пользователя и почту в настройках, очень важные параметры поскольку используються при каждом коммите.</td>
+
+                  <td class="middle">
+                     <div>
+                        git config --global user.name "John Doe"
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        $ git config --global user.email johndoe@example.com
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last">Осторожно в примере указан ключ<br>
+                  &nbsp;-- global&nbsp;</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Указать редактор</td>
+
+                  <td class="middle">git config --global core.editor emacs</td>
+
+                  <td class="last">Не обязательно, будет использоваться дефолтный с системы</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">встроенная diff-утилита, которая будет использоваться для разрешения конфликтов слияния.&nbsp;</td>
+
+                  <td class="middle">git config --global merge.tool vimdiff</td>
+
+                  <td class="last">Git умеет делать слияния при помощи kdiff3, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff, ecmerge и opendiff, но вы можете настроить и другую утилиту</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Проверка настроек</td>
+
+                  <td class="middle">git config --list<br>
+                  <br>
+                  git config {key}<br>
+                  (git config user.name) -для конкретного ключа</td>
+
+                  <td class="last">Некоторые ключи (названия) настроек могут появиться несколько раз, потому что Git читает один и тот же ключ из разных файлов (например из /etc/gitconfig и ~/.gitconfig). В этом случае Git использует последнее значение для каждого ключа.</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Оффлайн справка.</td>
+
+                  <td class="middle">
+                     <div>
+                        &nbsp;git help &lt;команда&gt;
+                     </div>
+
+                     <div>
+                        &nbsp;git &lt;команда&gt; --help
+                     </div>
+
+                     <div>
+                        &nbsp;man git-&lt;команда&gt;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        $ git help config
+                     </div>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/git/git.html">GIT</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

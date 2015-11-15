@@ -1,0 +1,122 @@
+#!/bin/bash
+
+# name:		make-category
+# author:	Dmitry Matviychuk
+# email:	dmitry.matviychuk@gmail.com
+# date:		07.04.2014
+
+# args  -up; update category text title 
+
+	clear
+
+# check args
+
+    rewrite='false';
+
+    if [ $# = 1 ]; then
+		if ! [ $1 = "-up" ]; then
+	    	echo -e "Error: recive argument $1 don\`t valid";
+	    	exit 1
+		else
+	    	rewrite='true'
+		fi 
+    fi
+
+    if [ $# -gt 1 ]; then
+	 	echo -e "Error: script receive don\`t valid arguments";
+		exit 2;
+    fi
+
+
+# read correct category name
+
+    correct_category='false';
+
+    while [ $correct_category = 'false' ]; do
+
+		echo -e "Enter category name (category name = category folder name = category menu file )";
+		read -p "Category name:" category
+
+	if ! [ -d $category ]; then
+	    echo -e "Folder $category not exist!";
+	else
+	    correct_category='true';
+	fi
+
+    done
+
+    echo -e "Start ... ";
+
+
+# check if exists category main file
+
+    path="$category/$category.html"										#file with category menu
+    
+    if  [ ! -f $path -o  $rewrite = 'true' ]; then						# -o = OR = ||
+
+    	read -p "Enter category text name:" category_text_name
+
+    else
+
+		category_text_name=`sed  -n -r '1h;1!H;${;g;s/.*<div class="category">([^<]+)<\/div>.*/\1/p}' $path`
+
+
+    fi
+
+    echo $category_text_name
+
+    # delete old file if it exist
+    if [  -f $path ]; then	
+    	rm $path
+	fi
+
+    #copy template
+	cp category-menu-tpl.html $path
+
+	#replace constants in file to real value
+	sed -i -e "s/@category_text_name/$category_text_name/g" $path
+
+
+# create list of files from category directory without category menu file 
+
+	exception_file="$category.html"
+
+	files_patchs=`find $category -type f` 					# file list from category dir
+
+	declare -a files_in_category
+
+	for patch in $files_patchs; do 							# create array with files names
+
+		file_name=`basename $patch`
+
+		if [ $exception_file != $file_name ]; then
+			files_in_category+=($file_name)
+		fi
+
+	done
+	
+	readarray -t files_in_category < <(for file in "${files_in_category[@]}"; do echo "$file"; done | sort) 					# sort files as in menu links	
+
+    category_link="<a class=\"category-link\" href=\"\/category\/$category\/$category.html\">$category_text_name<\/a>" 
+
+	declare -a insert_data
+
+	for file_name in "${files_in_category[@]}"; do
+
+		# copy sub title from file
+		sub_title=`sed  -n -r '1h;1!H;${;g;s/.*<h4 class="editable" id="sub-category-sub-title">(.*)<\/h4>.*/\1/p}' $category/$file_name`
+
+		# replace category name(link) from header and footer of sub-category file
+		sed -n -r -i  '1h;1!H;${;g;s/<a class="category-link" href[^>]+>[^<]+<\/a>/'"$category_link"'/g;p}' $category/$file_name
+
+		tpl="\\n\\t\\t\\t\\t\\t<a href=\"\/category\/$category\/$file_name\">$sub_title<\/a>"	
+
+		insert_data+=($tpl)	
+
+	done
+
+	new_content=${insert_data[@]}
+
+	sed -i "/<div id=\"category-menu\">/a \\$new_content" $path
+
+	echo -e "Done ... ";

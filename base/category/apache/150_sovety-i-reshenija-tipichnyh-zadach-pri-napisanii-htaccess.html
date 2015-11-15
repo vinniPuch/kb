@@ -1,0 +1,296 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';    
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl2">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Советы и решения типичных задач при написании htaccess</h4>
+         </div>
+
+         <table id="table-2column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs"><span style="background-color: rgb(222, 223, 223);">Составление регулярных выражений</span></td>
+
+                  <td class="last">
+                     <div style="background-color: rgb(222, 223, 223);">
+                        Старайтесь составлять регулярные выражения так, чтобы они наиболее узко определяли именно те запросы, которые вы хотите модифицировать — чтобы правила RewriteRule случайно не сработали для другого запроса. Например:
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        # Начинайте все регулярные выражения с "^" (признак начала строки)
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        # и заканчивайте "$" (признак конца строки):
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        RewriteRule ^news.php$ index.php
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        # Даже если в этом нет необходимости - для универсальности и лучшего&nbsp;
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        понимания конфигурации:
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        <br>
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        RewriteRule ^news/(.*)$ index.php
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        <br>
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        # Если под маску должны попадать только цифры - укажите это явно.
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        # Если какие-то цифры постоянны, укажите их явно.
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        # Если в оставшейся части запроса не могут присутствовать слеши, ограничьте их присутствие.
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        # Не забывайте экранировать "." (точки).
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        # Следующее правило нацелено на запросы вида http://example.com/news/2009/07/28/b-effect.html
+                     </div>
+
+                     <div style="background-color: rgb(222, 223, 223);">
+                        RewriteRule ^news/20[0-9]{2}/[0-9]{2}/[0-9]{2}/[^/]+\.html index.php
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Для увеличения производительности сервера лутше воздержаться от использования htaccess и все настройки сделать &nbsp;на виртуальном хосте поскольку файл&nbsp;htaccess парситься при обработке каждого запроса.</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">AllowOverride указать только для той папки в которой она нужна</td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        &lt;Directory /&gt;
+                     </div>
+
+                     <div>
+                        AllowOverride None
+                     </div>
+
+                     <div>
+                        &lt;/Directory&gt;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        &lt;Directory /var/www/html/&gt;
+                     </div>
+
+                     <div>
+                        AllowOverride all
+                     </div>
+
+                     <div>
+                        &lt;/Directory&gt;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">В юрл всегда должен быть закрывающий символ / к url/url иначе это приведет к редиректу на /url/url/<br>
+                  <br></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Нужно всегда склеивать домены с www или без &nbsp;www<br>
+                  <br></td>
+
+                  <td class="last">
+                     <div>
+                        перелинковку с www на домен без www:
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteEngine On
+                     </div>
+
+                     <div>
+                        RewriteCond %{HTTP_HOST} ^www.domain.ru$ [NC]
+                     </div>
+
+                     <div>
+                        RewriteRule ^(.*)$ http://domain.ru/$1 [R=301,L]
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Чтобы сделать переадресацию с домена без www на домен с www, необходимо добавить в файл .htaccess следующее:
+                     </div>
+
+                     <div>
+                        RewriteEngine On
+                     </div>
+
+                     <div>
+                        RewriteCond %{HTTP_HOST} ^domain.ru
+                     </div>
+
+                     <div>
+                        RewriteRule (.*) http://www.domain.ru/$1 [R=301,L]
+                     </div>
+
+                     <div>
+                        <br>
+                     </div><br>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        Обычный htaccess для Apache
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteEngine on
+                     </div>
+
+                     <div>
+                        RewriteCond %{REQUEST_FILENAME} !-d
+                     </div>
+
+                     <div>
+                        RewriteCond %{REQUEST_FILENAME} !-f
+                     </div>
+
+                     <div>
+                        RewriteRule ^(.+) index.php/$1 [L]
+                     </div>
+
+                     <div>
+                        &nbsp;
+                     </div>
+
+                     <div>
+                        Аналог обычного htaccess для Apache &nbsp;NginX
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        location / {
+                     </div>
+
+                     <div>
+                        &nbsp; if ( !-f $request_filename || !-d $request_filename ) {
+                     </div>
+
+                     <div>
+                        &nbsp; &nbsp; rewrite ^(.+) index.php/$1 last;
+                     </div>
+
+                     <div>
+                        &nbsp; }
+                     </div>
+
+                     <div>
+                        }
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

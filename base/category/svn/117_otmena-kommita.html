@@ -1,0 +1,105 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';    
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl1">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Отмена коммита</h4>
+         </div>
+
+         <table id="table-1column">
+            <tbody>
+               <tr>
+                  <td class="one">
+                     <div>
+                        Команды отмены изменений после коммита в системе SVN нет, но есть другие не менее эффективные способы вернуть файлы к предыдущему состоянию. Например, мы уже умеем выявлять различия между текущим и предыдущим состояниями с помощью команды diff. Поэтому можно выполнить diff, только номера коммитов указать в обратном порядке: сначала текущий коммит, а затем предыдущий, и сохранить результат в виде патча. После применения такого патча правки, которые мы внесли, удалятся.
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="one">
+                     <div>
+                        Второй вариант — это обратное слияние. Здесь, как и в случае с diff, мы указываем номера коммитов в обратном порядке, и в итоге команда merge накладывает на текущий коммит предыдущие изменения.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        svn merge -r 18:16 https://subversion.assembla.com/svn/k-base/trank
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        18 - номер текущей ревизии.
+                     </div>
+
+                     <div>
+                        16 - номер ревизии на которую делаеться откат.
+                     </div>
+
+                     <div>
+                        после слияния необходимо зфиксировать изминения.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        svn revert -R ./ &nbsp; &nbsp; - отмена всех локальных изминений.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

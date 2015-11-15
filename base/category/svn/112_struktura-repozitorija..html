@@ -1,0 +1,126 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';    
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl3">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Структура репозитория.</h4>
+         </div>
+
+         <table id="table-3column-2bold">
+            <tbody>
+               <tr contenteditable="false" class="">
+                  <td class="first"><span style="">Структура:</span><br></td>
+
+                  <td class="middle"><span style="">/</span><br style="">
+                  <span style="">&nbsp; &nbsp; /trunk</span><br style="">
+                  <span style="">&nbsp; &nbsp; /tags/</span><br style="">
+                  <span style="">&nbsp; &nbsp; &nbsp; &nbsp; /0.0.1</span><br style="">
+                  <span style="">&nbsp; &nbsp; &nbsp; &nbsp; /0.0.2</span><br style="">
+                  <span style="">&nbsp; &nbsp; &nbsp; &nbsp; ...</span><br style="">
+                  <span style="">&nbsp; &nbsp; /branches/</span><br style="">
+                  <span style="">&nbsp; &nbsp; &nbsp; &nbsp; /0.0.1</span><br style="">
+                  <span style="">&nbsp; &nbsp; &nbsp; &nbsp; /0.0.2</span><br style="">
+                  <span style="">&nbsp; &nbsp; &nbsp; &nbsp; ...</span><br></td>
+
+                  <td class="last">
+                     <p style="">/trunk — основная ветка разработки проекта. В нее вносятся все изменения и исправления ошибок.</p>
+
+                     <p style="">/tags содержит релизы проекта. Именно из поддиректорий директории /tags исходный код выкладывается на рабочие сервера.&nbsp;</p>
+
+                     <p style="">/branches необходима для упрощения внесения больших изменений в код проекта. В ней хранятся ветви разработки. Если человек разрабатывает большую фичу, то он должен создать себе бранч и время от времени синхронизировать его с trunk. По окончании разработки фичи этот бранч сливается с транком и удаляется.</p>
+
+                     <p style="">Итак, /trunk — основная ветвь разработки системы. Релизы создаются на основе содержимого директории /trunk. Создавать релизы на основе бранчей в данном случае не рекомендуется.</p>
+                  </td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="first"><span style="">Создание структуры (способ 1)</span><br></td>
+
+                  <td class="middle"><span style="">svn co http://svn.loc .<br>
+                  <br>
+                  svn mkdir /home/svn/some_repo/tags</span><br style="">
+                  <span style="">svn mkdir /home/svn/some_repo/branches</span><br style="">
+                  <span style="">svn mkdir /home/svn/some_repo/trunk&nbsp;<br>
+                  <br></span> svn ci -m&nbsp;"import structure"<br>
+                  <br></td>
+
+                  <td class="last"><span style="">По очереди создаем папки и делаем комит.</span><br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="first"><span style="">Создание структуры (способ 2)</span><br></td>
+
+                  <td class="middle">svn import /../svn_structure http://svn.loc -m"import structure"<br></td>
+
+                  <td class="last"><span style="">Создать временную директорию со структурой и закомитить ее.</span><br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="first"><span style="">Импортирование файлов в репозиторий.</span><br></td>
+
+                  <td class="middle">
+                     <p style="">svn import /../project &nbsp;http://svn.example.com/repos/calc/trunk -m "import"</p>
+                  </td>
+
+                  <td class="last">/../project путь к проекту который будет импортирован в репозиторий</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="first">Если импотр проекта был не успешным для повторного его проведения необходимо сделать чекаут удалить все файлы и папки потом сделать коммит изминений после чего повторный импорт проекта</td>
+
+                  <td class="middle"></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="first">Экспорт файлов из репозитория</td>
+
+                  <td class="middle">svn export [URL репозитория или файла/директории в нем] [target]<br></td>
+
+                  <td class="last">Получение проекта или его части без служебных папок. Если не указать target то експорт будет включать и папку которую експортирем (trunk например)</td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

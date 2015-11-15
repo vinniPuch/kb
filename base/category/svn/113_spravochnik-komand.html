@@ -1,0 +1,218 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';    
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl2">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Справочник команд</h4>
+         </div>
+
+         <table id="table-2column-2bold">
+            <tbody>
+               <tr contenteditable="false" >
+                  <td class="first">извлекаем файлы проекта из репозитория, сокращение: svn co;</td>
+
+                  <td class="last">svn checkout http://repository.url/svn/name .</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">получаем обновления из репозитория,<br>
+                  сокращение: svn up;<br></td>
+
+                  <td class="last">svn update</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">извлекаем ревизию файла с номером rev_num<br></td>
+
+                  <td class="last">svn update -r rev_num ./file_name</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">добавляем файл в репозиторий (не важно текстовый или бинарный);<br></td>
+
+                  <td class="last">svn add ./file_name</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">заливаем файл в репозиторий (не важно текстовый или бинарный);<br></td>
+
+                  <td class="last">svn commit ./file_name</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">переименовываем файл в репозитории;<br></td>
+
+                  <td class="last">svn rename ./old_file_name ./new_file_name&nbsp;<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">удаляем файл/директорию из репозитория;<br></td>
+
+                  <td class="last">svn remove ./file_name<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">просматриваем локально измененные файлы, сокращение: svn st;<br></td>
+
+                  <td class="last">svn status</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">просматриваем локально измененные и изменившиеся в репозитории файлы, сокращение: svn st -u;</td>
+
+                  <td class="last">svn status -u</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">показывает локальные изменения в файле построчно<br></td>
+
+                  <td class="last">svn diff ./file_name<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">показывает различия между ревизией rev_num1 и rev_num2 файла;<br></td>
+
+                  <td class="last">svn diff -r rev_num1:rev_num2 ./file_name<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">откатывает локальные изменения файла (выгружает из репозитория последнюю закоммиченную ревизию);<br></td>
+
+                  <td class="last">svn revert ./file_name<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">откатывает все локальные изменения файлов;<br></td>
+
+                  <td class="last">svn revert -R ./<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">список ревизий с комментариями;<br>
+                  список ревизий с комментариями с указанием ревизий;&nbsp;<br></td>
+
+                  <td class="last">svn log ./file_name<br>
+                  svn log -r 1:5<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">Расширенный лог ревизий. вместо -r есть еще ключ -q<br></td>
+
+                  <td class="last">svn log -v -r 5<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">показывает авторов изменений файла построчно, синоним: svn annotate;</td>
+
+                  <td class="last">svn blame ./file_name<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">добавляем файл в список игнорируемых файлов<br></td>
+
+                  <td class="last">svn propset svn:ignore ./file_name .&nbsp;<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">установка атрибутов файла<br></td>
+
+                  <td class="last">svn propset svn:keywords "Id Author Date" ./file_name</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">снимает блокировки с файлов</td>
+
+                  <td class="last">svn cleanup</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">снять блокировку файла (URL можно узнать с помощью команды svn info ./file_name | grep URL, его и нужно передавать в svn unlock);<br></td>
+
+                  <td class="last">svn unlock http://repository.url/svn/file_name<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">заменяет текстовое описание коммита, где rev_num — номер ревизии, commit_text_file — путь к файлу, содержащему новый комментарий к коммиту<br></td>
+
+                  <td class="last">svnadmin setlog --bypass-hooks /path/to/repository -r rev_num ./commit_text_file</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">выводит помощь по команде command_name, например, «svn help update»<br></td>
+
+                  <td class="last">svn help command_name<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">откатываем ревизию номер rev_to_rollback до ревизии rev_good, причем все изменения старше rev_to_rollback сохраняются (Например, у файла есть ревизии 11,12 и 13. Хотим откатить 12-ую ревизию, но так, что бы изменения 13-ой остались в силе. Делаем тогда так: svn merge -r 12:11 ./file_name);<br></td>
+
+                  <td class="last">svn merge -r rev_to_rollback:rev_good ./file_name<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">Откат к определенной ревизии где, 4 - текущая ревизия, а 1 - ревизия на которую осуществляется откат рабочей директории.<br></td>
+
+                  <td class="last">svn merge -r 4:1 file:///home/user/svn/project1<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">создаем ветку с названием new_branch_name из главной линии разработки;</td>
+
+                  <td class="last">svn copy http://repository.url/svn/name/trunk/ http://repository.url/svn/name/branches/new_branch_name/<br></td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">проверяем, что будет изменено при объединении веток, где rev_num1 — номер ревизии, когда ваша ветка была «открыта», или это м.б. номер предыдущего объединения (слияния), rev_num2 — версия главной линии разработки, с которой производим объединение. Необходимо отметить, что все изменения будут применены для директории, в которой выполнялась эта команда;<br></td>
+
+                  <td class="last">svn merge --dry-run -r rev_num1:rev_num2 http://repository.url/svn/name/trunk/</td>
+               </tr>
+
+               <tr contenteditable="false" class="">
+                  <td class="">синхронизирует вашу ветку с главной линией разработки с учетом ревизий: rev_num1 — номер ревизии, когда ваша ветка была «открыта», или это м.б. номер предыдущего объединения (слияния), rev_num2 — версия главной линии разработки, с которой производим объединение. Необходимо отметить, что все изменения будут применены для директории, в которой выполнялась эта команда;<br></td>
+
+                  <td class="last">svn merge -r rev_num1:rev_num2 http://repository.url/svn/name/trunk/<br></td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

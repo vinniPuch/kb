@@ -1,0 +1,75 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl3">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Патчи</h4>
+         </div>
+
+         <table id="table-3column-2bold">
+         <tbody>
+            <tr contenteditable="false" class="">
+               <td class="first">Создание файла патча в который
+               записываем результат выполнения команды
+               diff<br></td>
+
+               <td class="middle">svn diff -r 22:23 &gt;
+               ~/add-news_23.patch<br></td>
+
+               <td class="last">создается файл патч который
+               содержит информацию об изменениях между ревизиями 22
+               и 23</td>
+            </tr>
+
+            <tr contenteditable="false" class="">
+               <td class="first">Применить патч<br></td>
+
+               <td class="middle">svn update svn patch -p0 &lt;
+               ~/add-news_23.patch</td>
+
+               <td class="last"><br></td>
+            </tr>
+         </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/svn/svn.html">SVN</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

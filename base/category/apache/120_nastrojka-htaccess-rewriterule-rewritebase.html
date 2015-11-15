@@ -1,0 +1,836 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';    
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl2">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Настройка htaccess RewriteRule RewriteBase</h4>
+         </div>
+
+         <table id="table-2column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs">С чем работает RewriteRule<br>
+                  <br></td>
+
+                  <td class="last">На самом деле в RewriteRule передается не ссылка, а путь до запрошенного файла</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Путь до .htaccess отрезается вместе со слешем. Из этого есть следствие: строка, которая изначально передается на обработку RewriteRule никогда не начинается со "/".&nbsp;<br>
+                  <br></td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Запрос: http://example.com/templates/silver/images/logo.gif
+                     </div>
+
+                     <div>
+                        .htaccess находится в: example.com/templates/.htaccess
+                     </div>
+
+                     <div>
+                        В первый RewriteRule будет передано: silver/images/logo.gif
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div><img src="http://zoneli.ru/images/h/rewrite/rewriterule.png" alt="как работает RewriteRule" align="center" style="border: 0px; font-size: 13.333333969116211px; vertical-align: middle; outline: 0px; max-width: 100%; font-weight: normal; line-height: 21.111112594604492px; background-color: rgb(255, 255, 255);"></div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Важно запомнить, что не делает RewriteRule. Она не обрабатывает имя сайта, аргументы, которые переданы в скрипт, да и ссылку обрабатывает не всю, если .htaccess размещен не в корне сайта. Всем этим занимается RewriteCond</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     Несколько типичных ошибок.<br>
+                     <br>
+                     <br>
+                     <br>
+                     RewriteRule просто преобразовывает строку в соответствии с регулярными выражениями, и все. RewriteRule работает со строкой, а не со ссылкой или путем до файла.<br>
+                     <br>
+                     добнее всего теперь абстрагироваться от путей и ссылок и рассматривать то, с чем работает RewriteRule, как обычную строку. Эта строка передается от RewriteRule к RewriteRule, видоизменяясь, если какое-то из RewriteRule сработало.<br>
+                     <br>
+                     <br>
+
+                     <div>
+                        Взяли строку.
+                     </div>
+
+                     <div>
+                        Сравнили с регулярным выражением в первом аргументе.
+                     </div>
+
+                     <div>
+                        Если есть совпадение — заменили всю строку на значение второго аргумента.
+                     </div>
+
+                     <div>
+                        Передали строку следующему RewriteRule.
+                     </div>
+                  </td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # работать не будет - правило начинается со /
+                     </div>
+
+                     <div>
+                        RewriteRule ^/index.php$ /my-index.php
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # работать не будет - название сайта не анализируется RewriteRule
+                     </div>
+
+                     <div>
+                        RewriteRule ^example.com/.* http://www.example.com
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # работать не будет - аргументы ссылки не попадают в RewriteRule
+                     </div>
+
+                     <div>
+                        RewriteRule index.php\?newspage=([0-9]+) news.php?page=$1
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # Будет работать только если .htaccess находится там же, где находится папка templates,
+                     </div>
+
+                     <div>
+                        # например, в корне сайта. То есть, если .htaccess находится в templates/.htaccess , правило
+                     </div>
+
+                     <div>
+                        # работать НЕ БУДЕТ, потому что mod_rewrite отрежет путь до .htaccess и на вход RewriteRule
+                     </div>
+
+                     <div>
+                        # строка попадет уже без "templates/"
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteRule ^templates/common/yandex-money.gif$ templates/shared/yad.gif
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Для чего нужен RewriteBase<br>
+                  <br>
+                  RewriteBase фактически является хаком, который помогает восстановить исходный путь до файла</td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Если получившийся после преобразований запрос является относительным и отличается от исходного, RewriteBase добавит себя к нему слева. Нужно обязательно указывать RewriteBase в .htaccess. Его значение — путь от корня сайта до .htaccess.
+                     </div>
+
+                     <div>
+                        RewriteBase выполняется только после всех RewriteRule, а не между ними.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        После всех преобразований RewriteBase смотрит, относительный получился в итоге путь или абсолютный. В контексте Apache имеется в виду относительный или абсолютный путь, отсчитывая от корня сайта:
+                     </div>
+
+                     <div>
+                        images/logo.gif — относительный.
+                     </div>
+
+                     <div>
+                        /images/logo.gif — абсолютный (в начале слеш).
+                     </div>
+
+                     <div>
+                        http://example.com/images/logo.gif — самый абсолютный из всех.
+                     </div>
+
+                     <div>
+                        Если путь абсолютный, RewriteBase ничего не делает. А если относительный — RewriteBase дописывает себя слева. Это работает как для внутренних, так и для внешних редиректов
+                     </div>
+                  </td>
+
+                  <td class="last">
+                     <div>
+                        # .htaccess находится в /images/
+                     </div>
+
+                     <div>
+                        # RewriteBase указан /images/
+                     </div>
+
+                     <div>
+                        RewriteBase /images/
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # Запрос http://example.com/images/logo.gif
+                     </div>
+
+                     <div>
+                        # На вход RewriteRule попадает "logo.gif"
+                     </div>
+
+                     <div>
+                        RewriteRule ^logo.gif$ logo-orange.gif
+                     </div>
+
+                     <div>
+                        # После RewriteRule: "logo.gif" -&gt; "logo-orange.gif"
+                     </div>
+
+                     <div>
+                        # После RewriteBase: "logo-orange.gif" -&gt; "/images/logo-orange.gif"&nbsp;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # Запрос http://example.com/images/header.png
+                     </div>
+
+                     <div>
+                        # На вход RewriteRule попадает "header.png"
+                     </div>
+
+                     <div>
+                        RewriteRule ^header.png$ /templates/rebranding/header.png
+                     </div>
+
+                     <div>
+                        # После RewriteRule: "header.png" -&gt; "/templates/rebranding/header.png"
+                     </div>
+
+                     <div>
+                        # После RewriteBase: ничего не меняется, так итоговый результат преобразований начинается со "/'.
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        Теперь можно сформулировать следующие корректные правила:
+                     </div>
+
+                     <div>
+                        1) RewriteBase должен совпадать с путем от корня сайта до .htaccess.
+                     </div>
+
+                     <div>
+                        2) Начинать перенаправления со "/" нужно только тогда, когда необходимо указать абсолютный путь от корня сайта до файла.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last"><img src="http://zoneli.ru/images/h/rewrite/rewritebase.png" alt="как работает RewriteBase" align="center" style="border: 0px; font-size: 13.333333969116211px; vertical-align: middle; outline: 0px; max-width: 100%; font-weight: normal; line-height: 21.111112594604492px; background-color: rgb(255, 255, 255);"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Что будет, если не указать RewriteBase? По умолчанию Apache делает его равным абсолютному пути на файловой системе до .htaccess</td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # Запрос http://example.com/index.php
+                     </div>
+
+                     <div>
+                        # DocumentRoot: /var/www/example.com/
+                     </div>
+
+                     <div>
+                        # .htaccess находится в корне сайта, и в нем НЕ УКАЗАН RewriteBase.
+                     </div>
+
+                     <div>
+                        # Поэтому по умолчанию RewriteBase равен абсолютному пути до .htaccess: /var/www/example.com/
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Итак, запрос прошел через все RewriteRule, после чего к нему, в случае необходимости, добавился RewriteBase. Должен ли теперь Apache отдать файл, на который показывает результирующий путь?<br>
+                  <br></td>
+
+                  <td class="last"><br>
+                  Нет. Теперь получившийся запрос будет обрабатываться еще раз.</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Как работает mod_rewrite. Флаг [L]</td>
+
+                  <td class="last"><br>
+                  mod_rewrite запускает обработку запроса снова и снова, до тех пор, пока он не перестанет меняться. И флаг [L] не может это остановить.<br>
+                  <br></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        При составлении более-менее сложных конфигураций mod_rewrite важно понимать, что изменение запроса не заканчивается на последнем RewriteRule. После того, как сработало последнее правило RewriteRule и был добавлен RewriteBase, mod_rewrite смотрит, изменился запрос или нет. Если запрос изменился, его обработка начинается заново с начала .htaccess.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last"><br>
+                  Apache поступает так, потому что в процессе изменения запроса он мог быть перенаправлен в другую директорию. В ней может быть собственный .htaccess, который не участвовал в предыдущей обработке запроса. В этом же новом .htaccess могут быть правила, которые влияют на обработку запроса — как правила mod_rewrite, так и правила других модулей. Чтобы корректно обработать эту ситуацию, Apache должен запустить весь цикл обработки заново.</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">&nbsp;Постойте, но ведь есть флаг [L], который останавливает обработку запроса mod_rewrite'ом!</td>
+
+                  <td class="last">
+                     Не совсем так. Флаг [L] останавливает текущую итерацию обработки запроса. Однако если запрос был изменен теми RewriteRule, которые все-таки успели отработать, Apache запустит цикл обработки запроса заново с первого RewriteRule.<br>
+                     <br>
+
+                     <div>
+                        # Запрос: http://example.com/a.html
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteBase /
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteRule ^a.html$ b.html [L]
+                     </div>
+
+                     <div>
+                        RewriteRule ^b.html$ a.html [L]
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Пример выше приведет к бесконечному циклу перенаправлений и к «Internal Server Error» в итоге. В этом примере бесконечный цикл очевиден, однако в более сложных конфигурациях может потребоваться покопаться в правилах, чтобы определить, какие запросы зацикливаются между собой.&nbsp;
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        Чтобы избежать подобных ситуаций, рекомендуется использовать флаг [L] только при необходимости. Необходимость может быть двух типов:
+                     </div>
+
+                     <div>
+                        Когда используется внешний редирект — [L,R=301] или [L,R=302]. В случае внешнего редиректа дальнейшая обработка запроса нежелательна (см. ниже про флаг [R]), и ее лучше остановить.
+                     </div>
+
+                     <div>
+                        Когда в .htaccess есть зацикливание, от которого не избавиться, и обработку запроса mod_rewrite'ом нужно принудительно прекратить. В этом случае используется специальная конструкция — см. в конце статьи советы на эту тему.
+                     </div>
+                  </td>
+
+                  <td class="last">Флаг [R] не останавливает обработку запроса, возвращая сразу внешний редирект. Вместо этого он запоминает необходимость внешнего редиректа, и обработка запроса продолжается следующими RewriteRule. Рекомендуется всегда использовать с флагом [L].</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Рекомендуется при употреблении флага [R] указывать его совместно с [L]:</td>
+
+                  <td class="last">
+                     <br>
+
+                     <div>
+                        # BlackJack переехал на красивое имя
+                     </div>
+
+                     <div>
+                        RewriteRule ^bj/(.*) blackjack/$1 [R=301,L]
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # Можно использовать просто внешнюю ссылку
+                     </div>
+
+                     <div>
+                        RewriteRule ^bj/(.*) http://blackjack.example.com/$1 [L]
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Вместо использования флага [R] можно указывать просто внешнюю ссылку. В этом случае Apache сам догадается, что необходимо сделать внешний редирект. Здесь, как и с в случае с явным указанием флага [R], рекомендуется использовать флаг [L].
+                     </div>
+
+                     <div>
+                        Если внешний редирект ведет на тот же сайт, лучше использовать флаг [R] без указания полной ссылки (иными словами, использовать относительный внешний редирект). Это сделает правило независимым от имени сайта.
+                     </div>
+
+                     <div>
+                        Если же внешний редирект ведет на другой сайт, иначе, как указав полную внешнюю ссылку, это сделать не получится.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Как работает mod_rewrite. Указание параметров запроса и флаг [QSA]</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Изменение параметров запроса в RewriteRule не изменяет строку, с которой работает следующий RewriteRule. Однако при изменении параметров изменяется переменная %{QUERY_STRING}, с которой может работать RewriteCond.</td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">С помощью RewriteRule можно изменять не только путь до файла, который будет обрабатываться, но и параметры запроса GET, которые будут ему передаваться. Это часто используется для передачи обработки ЧПУ в общий скрипт-обработчик, например:</td>
+
+                  <td class="last">
+                     <div>
+                        RewriteBase /
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        # Запрос: http://example.com/news/2010/07/12/grand-opening.html
+                     </div>
+
+                     <div>
+                        # На входе: "news/2010/07/12/grand-opening.html"
+                     </div>
+
+                     <div>
+                        RewriteRule ^news/(.*)$ index.php?act=news&amp;what=$1
+                     </div>
+
+                     <div>
+                        # После RewriteRule: "news/2010/07/12/grand-opening.html" -&gt; "index.php"
+                     </div>
+
+                     <div>
+                        # %{QUERY_STRING}: "" -&gt; "act=news&amp;what=2010/07/12/grand-opening.html"
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <div>
+                           В момент, когда правило RewriteRule встречает вопросительный знак во втором аргументе, оно понимает, что происходит изменение параметров в запросе. В результате происходит следующее:
+                        </div>
+
+                        <div>
+                           RewriteRule заменяет строку, с которой оно работает, на часть второго аргумента до вопросительного знака. Обратите внимание, что новые параметры запроса не попадают в строку, с которой будут работать последующие правила RewriteRule.
+                        </div>
+
+                        <div>
+                           Часть второго аргумента после вопросительного знака попадает в переменную %{QUERY_STRING}. Если был указан флаг [QSA], параметры запроса будут добавлены в начало %{QUERY_STRING}. Если флаг указан не был, %{QUERY_STRING} полностью заменится параметрами запроса из RewriteRule.
+                        </div>
+
+                        <div>
+                           Еще пара примеров:
+                        </div>
+
+                        <div>
+                           RewriteBase /
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           # Запрос: http://example.com/news/2010/?page=2
+                        </div>
+
+                        <div>
+                           # На входе RewriteRule: "news/2010/"
+                        </div>
+
+                        <div>
+                           RewriteRule ^news/(.*)$ index.php?act=news&amp;what=$1
+                        </div>
+
+                        <div>
+                           # После преобразования: "news/2010/" -&gt; "index.php"
+                        </div>
+
+                        <div>
+                           # Значение %{QUERY_STRING}: "page=2" -&gt; "act=news&amp;what=2010/"
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           Скорее всего, правило выше работает неправильно, так как теряется аргумент page. Исправим это:
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           RewriteBase /
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           # Запрос: http://example.com/news/2010/?page=2
+                        </div>
+
+                        <div>
+                           # На входе RewriteRule: "news/2010/"
+                        </div>
+
+                        <div>
+                           RewriteRule ^news/(.*)$ index.php?act=news&amp;what=$1 [QSA]
+                        </div>
+
+                        <div>
+                           # После преобразования: "news/2010/" -&gt; "index.php"
+                        </div>
+
+                        <div>
+                           # Значение %{QUERY_STRING}: "page=2" -&gt; "act=news&amp;what=2010/&amp;page=2"
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           Мы добавили только флаг [QSA], и правило стало работать корректно.&nbsp;
+                        </div>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Важно понимать, что изменение параметров запроса изменяет %{QUERY_STRING}, который может использоваться в дальнейшем в RewriteCond. Это нужно учитывать при составлении последующих правил, проверяющих аргументы.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        — Конечно, изменяется, ведь запрос уходит на повторную обработку Apache'м!
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Нет, %{QUERY_STRING} изменяется сразу же.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        RewriteCond и производительность
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Сначала проверяется совпадение запроса с RewriteRule, а уже потом — дополнительные условия RewriteCond.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Пару слов стоит сказать о том, в каком порядке mod_rewrite выполняет директивы. Так как в .htaccess сначала идут RewriteCond, а потом RewriteRule, кажется, что mod_rewrite сначала проверяет все условия, а потом приступает к выполнению RewriteRule.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        На самом деле все происходит наоборот. Сначала mod_rewrite проверяет, подходит ли текущее значение запроса под регулярное выражение RewriteRule, а уже потом будет проверять все условия, перечисленные в RewriteCond.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Так что если у вас в RewriteRule регулярное выражение на две страницы и вы, задумавшись о производительности, решили ограничить выполнение этого правила дополнительными RewriteCond, знайте — ничего не получится. В этом случае лучше использовать флаги RewriteRule [C] или [S], чтобы пропустить более сложное правило, если более простые проверки не сработали.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Разница в работе mod_rewrite в контексте .htaccess и в контексте VirtualHost<br>
+                  <br></td>
+
+                  <td class="last">
+                     <div>
+                        В &lt;VirtualHost&gt; в RewriteRule попадает весь путь запроса, начиная от первого слеша, заканчивая началом параметров GET: «http://example.com/some/news/category/post.html?comments_page=3» -&gt; "/news/category/post.html". Эта строка всегда начинается со /.
+                     </div>
+
+                     <div>
+                        Второй аргумент RewriteRule также необходимо начинать со /, иначе будет «Bad Request».
+                     </div>
+
+                     <div>
+                        RewriteBase не имеет смысла.
+                     </div>
+
+                     <div>
+                        Проход правил происходит только один раз. Флаг [L] действительно заканчивает обработку всех правил, описанных в &lt;VirtualHost&gt;, без каких-либо последующих итераций.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Пример
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        <div>
+                           &lt;VirtualHost *:80&gt;.
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           &nbsp; &nbsp; ServerName test.loc.
+                        </div>
+
+                        <div>
+                           &nbsp; &nbsp; DocumentRoot /home/dima/web/test
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           &nbsp; &nbsp; RewriteEngine on
+                        </div>
+
+                        <div>
+                           &nbsp; &nbsp; RewriteRule ^/public/img/posters/([0-9]+)/([0-9]+)/(.*)?$ /pub/img/posters/$
+                        </div>
+
+                        <div>
+                           <br>
+                        </div>
+
+                        <div>
+                           &lt;/VirtualHost&gt;
+                        </div>
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

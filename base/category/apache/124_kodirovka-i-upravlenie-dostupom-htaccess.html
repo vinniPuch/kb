@@ -1,0 +1,224 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl2">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Кодировка и управление доступом htaccess</h4>
+         </div>
+
+         <table id="table-2column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs"><br>
+                  AddDefaultCharset задает дефолтную таблицу символов (кодировку) для всех выдаваемых страниц на веб сервере Apache. Указываем кодировку на все файлы, в которой по умолчанию получает документы браузер:&nbsp;<br>
+                  <br></td>
+
+                  <td class="last"><br>
+                  <br>
+                  AddDefaultCharset WINDOWS-1251</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Если необходимо отменить перекодировку сервером файлов:&nbsp;<br>
+                  <br></td>
+
+                  <td class="last"><br>
+                  CharsetDisable on</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Для запрета или разрешения доступа ко всем файлам и папкам в текущей и во всех вложенных директориях используется директива Order синтаксис ее очень прост:&nbsp;</td>
+
+                  <td class="last">
+                     <div>
+                        Order [Deny,Allow] | [Allow,Deny]
+                     </div>
+
+                     <div>
+                        # По умолчанию Deny,Allow
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">В зависимости от того в каком порядке указаны директивы меняется логика работы сервера. В случае если Deny,Allow то запрещается доступ со всех IP кроме оговоренных, в случае если Allow,Deny разрешается доступ со всех IP кроме оговоренных. Далее должны идти секции описания для доступа и запрета. Ключевое слово all означает со всех IP</td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Например, мы хотим запретить (блокировать) доступ с IP 81.222.144.12 и 81.222.144.20 и разрешить всем остальным нам необходимо добавить в .htaccess следующий код:&nbsp;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Order Allow,Deny
+                     </div>
+
+                     <div>
+                        Allow from all
+                     </div>
+
+                     <div>
+                        Deny from 81.222.144.12 81.222.144.20
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Для обратной ситуации, когда мы хотим запретить доступ со всех IP кроме 81.222.144.12 и 81.222.144.20 нам необходимо добавить в .htaccess следующий код:&nbsp;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Order Deny,Allow
+                     </div>
+
+                     <div>
+                        Deny from all
+                     </div>
+
+                     <div>
+                        Allow from 81.222.144.12 81.222.144.20
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Запрет или разрешение на доступ можно указывать не только на все файлы, но так же можно указывать на отдельный файл или группы файлов. Например, мы хотим запретить доступ всех пользователей кроме IP 81.222.144.12 к файлу passwd.html, который расположен в текущей директории.&nbsp;</td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        &lt;Files "passwd.html"&gt;
+                     </div>
+
+                     <div>
+                        &nbsp; Order Deny,Allow
+                     </div>
+
+                     <div>
+                        &nbsp; Deny from all
+                     </div>
+
+                     <div>
+                        &nbsp; Allow from 81.222.144.12
+                     </div>
+
+                     <div>
+                        &lt;/Files&gt;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Так же можно запретить или разрешить доступ к определенной группе файлов. Например, к файлам с расширением ".key":&nbsp;</td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        &lt;Files "\.(key)$"&gt;
+                     </div>
+
+                     <div>
+                        &nbsp; Order Deny,Allow
+                     </div>
+
+                     <div>
+                        &nbsp; Deny from all
+                     </div>
+
+                     <div>
+                        &nbsp; Allow from 81.222.144.12
+                     </div>
+
+                     <div>
+                        &lt;/Files&gt;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

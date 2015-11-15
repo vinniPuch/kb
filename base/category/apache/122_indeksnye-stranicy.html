@@ -1,0 +1,124 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl2">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Индексные страницы</h4>
+         </div>
+
+         <table id="table-2column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs">
+                     <div>
+                        Когда пользователь заходит на хост например http://gentoo.org принято, что открывается индексный файл index.* при его отсутствии - либо содержимое каталога, либо ошибку 403 (FORBIDDEN) если опция отключена - запрещен просмотр директорий.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        За листинг файлов отвечает директива Indexes (показывать посетителю список файлов, если в выбранном каталоге нет файла index.html или его аналога).
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Иногда нужно сделать так, чтобы в случае отсутствия в каталоге файла, который показывается по умолчанию, листинг, то есть список файлов в каталоге, не выдавался. В этом случае добавим в .htaccess такую строчку:&nbsp;
+                     </div>
+                  </td>
+
+                  <td class="last">
+                     <div>
+                        # Запрет выдачи листинга пустого каталога
+                     </div>
+
+                     <div>
+                        Options -Indexes
+                     </div>
+
+                     <div>
+                        А чтобы выдавал листинг, нужно:&nbsp;
+                     </div>
+
+                     <div>
+                        Options Indexes
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">
+                     <div>
+                        Если же понадобиться разрешить просматривать список файлов, но чтобы при этом чаcть файлов определенного формата не отображалась, то запишем:.&nbsp;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+
+                  <td class="last">IndexIgnore *.php* *.pl<br>
+                  <br>
+                  Выдает листинг каталога, т.е. его содержание со всем содержанием, за исключением файлов-скриптов PHP и Perl.&nbsp;<br>
+                  <br></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Если ваш веб-сайт построен на скриптах, то в качестве индексных часто могут использоваться файлы с другими расширениями - указать эти файлы можно с помощью директивы DirectoryIndex .&nbsp;</td>
+
+                  <td class="last">DirectoryIndex index.html index.shtml index.pl index.cgi index.php</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Если же вы хотите что бы при обращении к каталогу открывался не index.html, а например, файл htaccess.php или /cgi-bin/index.pl:&nbsp;</td>
+
+                  <td class="last">DirectoryIndex htaccess.php /cgi-bin/index.pl</td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>

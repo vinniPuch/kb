@@ -1,0 +1,187 @@
+<html>
+<head>
+   <meta charset="utf-8">
+
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+   <script type="text/javascript">
+var type = 'table';
+   </script>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="page-title">
+         <div id="title">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div id="content-wrapper" class="table-tpl2">
+         <div id="header-indent"></div>
+
+         <div class="indent"></div>
+
+         <div id="sub-title-bar">
+            <h4 class="editable" id="sub-category-sub-title">Паролирование директорий</h4>
+         </div>
+
+         <table id="table-2column-2bold">
+            <tbody>
+               <tr>
+                  <td class="firs"><br>
+                  .htaccess можно так же использовать для установки пароля на доступ к определенным папкам, файлам и группам файлов.&nbsp;</td>
+
+                  <td class="last">
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        AuthName "Protected area, need authorization"
+                     </div>
+
+                     <div>
+                        AuthType Basic
+                     </div>
+
+                     <div>
+                        AuthUserFile /home/t/test/.authfile
+                     </div>
+
+                     <div>
+                        require valid-user
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+
+                     <div>
+                        Данный файл нужно положить в ту директории, на которую мы хотим поставить пароль.
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Директива AuthName выводит сообщение при запросе пароля, все сообщение необходимо писать в одну строчку<br>
+                  <br></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Директива AuthType выбирает тип аутентификации. Возможны следующие типы: Basic или Digest. Второй может не поддерживаться некоторыми браузерами, поэтому пользоваться им не рекомендуется.&nbsp;<br>
+                  <br></td>
+
+                  <td class="last"></td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  AuthUserFile указывает имя файла с паролями для аутентификации пользователей (пароли в этом файле будут шифрованными). Путь к файлу с паролями задается относительно корня веб-сервера. Храните файл с паролями в папке, доступ к которой закрыт для пользователей - (желательно поместить этот файл вне иерархии вашего веб-сайта).<br>
+                  <br></td>
+
+                  <td class="last"><br>
+                  htpasswd -c file_name user_name &nbsp;- создание файла.<br>
+                  <br>
+                  htpasswd &nbsp;file_name user_name &nbsp;- добавление пользователя в файл.</td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs"><br>
+                  Вернемся к описанию директив паролирования директорий. Директива Require определяет пользователей, которые могут получить доступ&nbsp;<br>
+                  <br></td>
+
+                  <td class="last">
+                     <br>
+                     Require USER_NAME | valid-user<br>
+                     <br>
+                     Указывая valid-user, вы разрешаете доступ всем пользователям, перечисленным в файле паролей.&nbsp;<br>
+                     <br>
+
+                     <div>
+                        AuthName "Protected area, need authorization"
+                     </div>
+
+                     <div>
+                        AuthType Basic
+                     </div>
+
+                     <div>
+                        AuthUserFile /home/t/test/.authfile
+                     </div>
+
+                     <div>
+                        require Alexey Kondr Fenix
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+
+               <tr class="">
+                  <td class="firs">Так же как и с запретом доступа по IP здесь можно использовать расширение &lt;Files&gt; ниже приведены два примера: установки пароля на группу файлов и на один определенный файл.&nbsp;</td>
+
+                  <td class="last">
+                     <div>
+                        &lt;Files "passwd.html"&gt;
+                     </div>
+
+                     <div>
+                        &nbsp; &nbsp; AuthName "Protected area, need authorization"
+                     </div>
+
+                     <div>
+                        &nbsp; &nbsp; AuthType Basic
+                     </div>
+
+                     <div>
+                        &nbsp; &nbsp; AuthUserFile /home/t/test/.authfile
+                     </div>
+
+                     <div>
+                        &nbsp; &nbsp; require valid-user
+                     </div>
+
+                     <div>
+                        &lt;/Files&gt;
+                     </div>
+
+                     <div>
+                        <br>
+                     </div>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="fake-footer"></div>
+      </div>
+
+      <div class="page-footer">
+         <div id="footer">
+            <a class="logo" href="/"><span>­</span></a>
+
+            <div class="category">
+               <a class="category-link" href="/category/apache/apache.html">Apache</a>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer-indent"></div>
+   </div>
+</body>
+</html>
